@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CalendarDays } from 'lucide-react'; // or any icon lib
 import FilterDropdown from '../../components/FilterDropdown';
 import LaunchTable from '../../components/LaunchTable';
 import Pagination from '../../components/Pagination';
@@ -8,7 +7,7 @@ import Loader from '../../components/Loader';
 import EmptyState from '../../components/EmptyState';
 import DateFilterModal from '../../components/DateFilterModal'; // 👈 add this
 import { fetchLaunches } from './launchesApi';
-
+import { CalendarDays, ChevronDown } from "lucide-react"
 
 const filterToQuery = {
   all: {},
@@ -47,15 +46,18 @@ console.log("Date Filter:", dateFilter);
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setShowDateModal(true)}
-            className="flex items-center gap-2 text-sm bg-white border px-3 py-1 rounded shadow hover:bg-gray-50"
-          >
-            <CalendarDays className="w-4 h-4" />
-            {dateFilter.label}
-          </button>
-        </div>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setShowDateModal(true)}
+          className="flex items-center gap-2 text-sm bg-white border border-gray-200 px-3 py-2 rounded-md shadow-sm hover:bg-gray-50 transition-colors duration-150 font-medium text-gray-700"
+        >
+          <CalendarDays className="w-4 h-4 text-gray-500" />
+          <span>{dateFilter.label}</span>
+          <ChevronDown className="w-4 h-4 text-gray-400" />
+        </button>
+      </div>
+
+
 
         <FilterDropdown
           selected={filter}
