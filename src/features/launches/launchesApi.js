@@ -55,8 +55,9 @@ query.date_utc = {
       query.date_utc = { $gte: date.toISOString() };
     }
   }
+  const BASE_URL = import.meta.env.VITE_SPACEX_API;
 
-  const res = await fetch('https://api.spacexdata.com/v4/launches/query', {
+  const res = await fetch(`${BASE_URL}/launches/query`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
